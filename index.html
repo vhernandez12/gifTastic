@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="animalButtons">
+        <button data-animal = "cat">cat</button>
+        <button data-animal="dogs">dogs</button>
+        <button data-animal="owls">owls</button>
+        <button data-animal="whales">whales</button>
+        <button data-animal="sloth">sloth</button>
+    </div>
+
+    <form id="animalForm">
+        <label for="animalInput">Add an Animal</label>
+        <input type="text" id="animalInput">
+
+        <input id="addAnimal" type="submit" value="submit">
+
+    </form>
+
+        
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var animals = [];
+    var currentgif;
+    var pausedgif;
+    var animatedgif;
+    //adding click event to buttons
+    $("button").on("click", function() {
+        //grabbing and storing the data-animal property from button
+        var animal = $(this).attr("data-animal");
+
+        // Example queryURL for Giphy API
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        animal + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+})
+//data comes back from the request
+    .then(function(response) {
+        console.log(queryURL);
+//storing data from AJAX request
+    var results = response.data;
+
+//looping through each result item
+        for (var i = 0; i <results.length; i++){
+
+        var animalDiv = $("<button>");
+        }
+    });
+});
+
+    
+</script>
+</body>
+</html>
